@@ -5,7 +5,11 @@ from models import User
 from models.abc import db
 from repositories import UserRepository
 from server import server
+import sys
+import os
 
+# Ajouter le chemin du dossier racine à sys.path
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 class TestUser(unittest.TestCase):
     @classmethod
