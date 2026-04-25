@@ -7,7 +7,7 @@ from flask.json import jsonify
 from flask_restful import Resource
 from flask_restful.reqparse import Argument
 
-from repositories import UserRepository
+from src.repositories import UserRepository
 from util import parse_params
 
 
