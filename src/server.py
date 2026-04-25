@@ -2,7 +2,7 @@ from flasgger import Swagger
 from flask import Flask
 from flask.blueprints import Blueprint
 
-import config
+from . import config
 import routes
 from models import db
 
