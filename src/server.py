@@ -2,18 +2,14 @@ from flasgger import Swagger
 from flask import Flask
 from flask.blueprints import Blueprint
 
-from . import config
-import routes
-from models import db
+from src import config
+from src import routes
+from src.models import db
 
-# config your API specs
-# you can define multiple specs in the case your api has multiple versions
-# ommit configs to get the default (all views exposed in /spec url)
-# rule_filter is a callable that receives "Rule" object and
-#   returns a boolean to filter in only desired views
+import os
 
 server = Flask(__name__)
-import os
+
 server.config["SWAGGER"] = {
     "swagger_version": "2.0",
     "title": "Application",
@@ -23,7 +19,7 @@ server.config["SWAGGER"] = {
             "title": "Application",
             "endpoint": "spec",
             "route": "/application/spec",
-            "rule_filter": lambda rule: True,  # all in
+            "rule_filter": lambda rule: True,
         }
     ],
     "static_url_path": "/apidocs",
@@ -34,6 +30,7 @@ Swagger(server)
 server.debug = config.DEBUG
 server.config["SQLALCHEMY_DATABASE_URI"] = config.DB_URI
 server.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = config.SQLALCHEMY_TRACK_MODIFICATIONS
+
 db.init_app(server)
 db.app = server
 
