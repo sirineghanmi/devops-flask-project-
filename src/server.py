@@ -1,12 +1,9 @@
 from flasgger import Swagger
-from flask import Flask
-from flask.blueprints import Blueprint
+from flask import Flask, Blueprint
 
 from src import config
 from src import routes
 from src.models import db
-
-import os
 
 server = Flask(__name__)
 
@@ -32,11 +29,13 @@ server.config["SQLALCHEMY_DATABASE_URI"] = config.DB_URI
 server.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = config.SQLALCHEMY_TRACK_MODIFICATIONS
 
 db.init_app(server)
-db.app = server
+# db.app = server
 
 for blueprint in vars(routes).values():
     if isinstance(blueprint, Blueprint):
         server.register_blueprint(blueprint, url_prefix=config.APPLICATION_ROOT)
 
+if __name__ == "__main__":
+    server.run(host=config.HOST, port=config.PORT)
 if __name__ == "__main__":
     server.run(host=config.HOST, port=config.PORT)
