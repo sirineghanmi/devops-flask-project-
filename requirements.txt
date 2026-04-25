@@ -1,7 +1,8 @@
 flask
 gunicorn
 psycopg2-binary
-flask-sqlalchemy
+SQLAlchemy==1.4.46
+Flask-SQLAlchemy==2.5.1
 flask-migrate
 flasgger
 flask-restful
