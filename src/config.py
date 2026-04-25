@@ -1,5 +1,6 @@
 import logging
 import os
+from . import config
 
 DEBUG = os.getenv("ENVIRONEMENT") == "DEV"
 APPLICATION_ROOT = os.getenv("APPLICATION_APPLICATION_ROOT", "/application")
