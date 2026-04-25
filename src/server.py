@@ -13,7 +13,7 @@ from models import db
 #   returns a boolean to filter in only desired views
 
 server = Flask(__name__)
-
+import os
 server.config["SWAGGER"] = {
     "swagger_version": "2.0",
     "title": "Application",
