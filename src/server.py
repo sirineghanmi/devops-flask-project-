@@ -1,5 +1,5 @@
 from flasgger import Swagger
-from flask import Flask, Blueprint
+from flask import Flask, Blueprint, jsonify
 
 from src import config
 from src.models import db
@@ -24,6 +24,12 @@ server.config["SWAGGER"] = {
 }
 
 Swagger(server)
+
+
+@server.route("/")
+def health():
+    return jsonify({"status": "ok"}), 200
+
 
 # ---------------- DB config ----------------
 server.debug = config.DEBUG
