@@ -1,0 +1,1 @@
+web: gunicorn src.server:server --bind 0.0.0.0:$PORT
