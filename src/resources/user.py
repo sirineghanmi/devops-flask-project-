@@ -49,3 +49,4 @@ class UserResource(Resource):
             age=age
         )
         return jsonify({"user": user.json})
+    

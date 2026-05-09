@@ -41,3 +41,4 @@ for blueprint in vars(routes).values():
 # ---------------- RUN ----------------
 if __name__ == "__main__":
     server.run(host=config.HOST, port=config.PORT)
+    
