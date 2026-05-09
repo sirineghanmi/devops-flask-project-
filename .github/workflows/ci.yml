@@ -44,4 +44,8 @@ jobs:
       - name: Run tests
         run: pytest
         env:
-          DB_URI: postgresql://postgres:postgres@localhost:5432/postgres
+          APPLICATION_POSTGRES_HOST: localhost
+          APPLICATION_POSTGRES_USER: postgres
+          APPLICATION_POSTGRES_PW: postgres
+          APPLICATION_POSTGRES_DB: postgres
+          APPLICATION_POSTGRES_PORT: 5432
