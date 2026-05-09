@@ -1,12 +1,13 @@
 import json
 import unittest
-
-from models import User
-from models.abc import db
-from repositories import UserRepository
-from server import server
 import sys
 import os
+
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+from src.models.abc import db
+from src.util.parse_params import parse_params
+from src.repositories import UserRepository
 
 # Ajouter le chemin du dossier racine à sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
