@@ -4,7 +4,7 @@ import warnings
 import sys
 import os
 
-from src.server import app
+from src.server import server
 
 
 

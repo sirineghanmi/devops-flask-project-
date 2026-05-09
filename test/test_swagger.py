@@ -5,8 +5,7 @@ import warnings
 import sys
 import os
 
-from src.server import app
-
+from src.server import server
 
 # Ajouter le chemin du dossier racine à sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
