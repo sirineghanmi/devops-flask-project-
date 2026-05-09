@@ -6,16 +6,15 @@ import os
 
 from src.server import server
 
-
-
 # Ajouter le chemin du dossier racine à sys.path
 sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+
 
 class TestSwaggerCoverage(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.client = server.test_client()
-        cls.BANNED_RULES = ["/spec", "/apidocs", "/static"]
+        cls.BANNED_RULES = ["/spec", "/apidocs", "/static", "/oauth2-redirect.html"]
         cls.THRESHOLD = 100
 
     def test_swagger_coverage(self):

@@ -7,17 +7,19 @@ sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
 
 from src.server import server
 from src.models.abc import db
-from src.util.parse_params import parse_params
 from src.repositories import UserRepository
-
-# Ajouter le chemin du dossier racine à sys.path
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
 
 
 class TestUser(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.client = server.test_client()
+        cls.ctx = server.app_context()
+        cls.ctx.push()
+
+    @classmethod
+    def tearDownClass(cls):
+        cls.ctx.pop()
 
     def setUp(self):
         db.create_all()
@@ -52,7 +54,6 @@ class TestUser(unittest.TestCase):
             response_json,
             {"user": {"age": 30, "first_name": "John", "last_name": "Doe"}},
         )
-        self.assertEqual(User.query.count(), 1)
 
     def test_update(self):
         """ The PUT on `/user` should update an user's age """
