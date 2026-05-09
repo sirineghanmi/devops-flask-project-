@@ -5,6 +5,7 @@ from src import config
 from src.models import db
 
 server = Flask(__name__)
+app = server
 
 # ---------------- Swagger config ----------------
 server.config["SWAGGER"] = {
