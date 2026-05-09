@@ -20,11 +20,10 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
-          pip install flake8
+          pip install flake8 pytest
 
       - name: Lint with Flake8
         run: flake8 src/ --max-line-length=120 --ignore=E402,W503
 
       - name: Run tests
         run: pytest
-        
